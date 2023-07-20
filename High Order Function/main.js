@@ -43,7 +43,7 @@ for (let i = 0; i < ages.length; i++) {
 }
 console.log(canDrink);
 
-Filter
+// Filter
 const canDrink1 = ages.filter(function(i) {
   if(i > 18) {
     return true;
