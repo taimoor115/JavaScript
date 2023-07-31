@@ -316,3 +316,38 @@ const areaCal = function(radius, logic) {
 
 console.log(areaCal(radius, circleArea));
 console.log(areaCal(radius,circumference));
+
+arr1 = [1,2,3,4,5];
+function double(x) {
+  return x * 2;
+}
+function triple(x) {
+  return x * 3;
+}
+function binary(x) {
+  return x.toString(2);
+}
+
+const doubleArr = arr1.map(double)
+const tripleArr = arr1.map(triple);
+const binaryArr = arr1.map(binary);
+console.log(doubleArr);
+console.log(tripleArr);
+console.log(binaryArr);
+
+//Filter
+arr2 = [1,2,3,4];
+function isOdd(x) {
+  return x % 2 == 1;
+}
+
+const oddArr = arr2.filter(isOdd)
+console.log(oddArr);
+
+
+// //Reduce
+const arr3 = [1, 2, 3, 4];
+const max = arr3.reduce((curMax, currentValue) => (currentValue > curMax) ? currentValue : curMax);
+
+console.log(max); // Output: 4
+
