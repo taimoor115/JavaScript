@@ -1,3 +1,12 @@
+# Pass by Value Call by Value Shallow Copy
+
+- All primivites are pass by value
+- number, undefined, null, boolean, string,
+
+# Pass by Reference Call by Reference Deep Copy
+
+- functon objects and Arrays
+
 ## `null` is considered a primitive value in JavaScript.
 
 - As a primitive value, `null` is not an object and does not have properties or methods of its own.

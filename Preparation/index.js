@@ -1,119 +1,38 @@
-let a = 12; // global scope
-function example1() {
-  let b = 21; //function scope
-  if(condition) {
-    let c  = 1; //local scope
-  }
+let arr = [1, 2, 3, 3, 5, 6, 7];
+
+const a = arr.find((f) => f % 2 == 0);
+console.log(a); // Return a value
+
+const b = arr.filter((f) => f % 2 == 0);
+console.log(b); // Return an Array
+
+const c = arr.slice(0, 6);
+console.log(c); // Return an Array
+
+arr.push(8, 9);
+console.log(arr); //modify the original array
+
+let arr1 = arr.concat(10, 11);
+console.log(arr1); // Not modify the original array
+
+let arr2 = [1, 2, 3, 4, 5];
+arr2.splice(0, 0, "x", "y");
+console.log(arr2);
+arr2.splice(0, 2);
+console.log(arr2);
+
+function sum(a, b, c) {
+  console.log(arguments[0]); // array like objects
 }
-function example3() {
-  let a = "HELLO WORLD";
-  let arr = a.split(" ");
-  console.log(arr);
-}
-example3();
+sum(1, 2, 3);
 
-const d = document.querySelectorAll("p");
-console.log(d);
+const arr3 = [...arr2];
+console.log(arr3);
 
-for (let i = 0; i < a.length; i++) {
-  console.log(a[i].textContent);
-}
+arr3[0] = "Taimoor";
+console.log(arr3);
+console.log(arr2); //Shallow Copy
 
-let number = 12;
-const string = "12";
-console.log(number == string);
-
-function sum(first, second, ...restArgument) {
-  let sum = first + second;
-  for (let i of restArgument) {
-    sum += i;
-  }
-  return sum;
-}
-
-number = [3, 4, 5];
-console.log(sum(1, 2, ...number));
-
-function myFunction(a, b, c) {
-  console.log(a, b, c);
-}
-const args = [1, 2, 3];
-myFunction(...args); // Equivalent to myFunction(1, 2, 3)
-
-const str = "hello";
-const chars = [...str]; // ['h', 'e', 'l', 'l', 'o']
-console.log(chars);
-
-function sum2(...args) {
-  return args.reduce((acc, val) => acc + val, 0);
-}
-
-const args1 = [1, 2, 3, 4, 5];
-console.log(sum2(...args1));
-
-let e = "12";
-let b = 12;
-
-console.log(e == b);
-console.log(e === b);
-
-// Deep Copy
-// In deep copy the reference address of the object is copy so if
-// we change the content of copied object the content of original object is also changes
-let object1 = {
-  name: "Taimoor",
-};
-let object2 = object1;
-object2.name = "Taimoor Hussain";
-
-console.log(object1.name);
-
-// Shallow Copy
-// In shallow copy the address is not copy the original value is copy
-
-let object3 = {
-  name: "Taimoor",
-};
-let object4 = { ...object3 };
-object3.name = "Taimoor Hussain";
-
-console.log(object3.name);
-console.log(object4.name);
-
-// Problem in making the shallow copy using  spread operator
-let object5 = {
-  name: "Taimoor",
-  address: {
-    city: "Lahore",
-    state: "Punjab",
-  },
-};
-let object6 = { ...object5 };
-object6.address.city = "Islamabad";
-console.log(object5.address.city);
-console.log(object6.address.city); // it should be Lahore but it is Islamabad because spread operator make one level shallow copy only
-let object9 = {
-  name: "Taimoor",
-  address: {
-    city: "Lahore",
-    state: "Punjab",
-  },
-};
-let object10 = Object.assign({}, object9);
-object10.address.city = "Islamabad";
-console.log(object10.address.city); // Islamabad
-console.log(object9.address.city); // Islamabad
-
-Solution:
-
-let object7 = {
-  name: "Taimoor",
-  address: {
-    city: "Lahore",
-    state: "Punjab",
-  },
-};
-let object8 = JSON.parse(JSON.stringify(object7));
-object7.address.city = "Islamabad";
-console.log(object7.address.city); // Islamabad
-console.log(object8.address.city); // Now it is Lahore
+const arr4 = { 0: "a", 1: "b" };
+const arr5 = Array.from(arr4);
+console.log(arr5);
