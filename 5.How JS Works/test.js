@@ -1,3 +1,4 @@
+"use strict";
 // a();
 // var b = 10;
 // function a() {
@@ -369,7 +370,7 @@ function getResolved() {
   console.log("2nd");
 }
 
-getResolved();
+// getResolved();
 // console.log(typeof function () {});
 // Output
 // 1st // immeditiately
@@ -416,3 +417,48 @@ async function getResolved1() {
 // }
 
 // handlePromise2().catch((err) => console.log(err.message));
+
+// This
+("use strict");
+// This inside the global space it always attach to the globalObject.. In browser global object is window but it is different in dfferent runtime environment
+console.log(this);
+
+function x() {
+  console.log(this);
+}
+x(); // if we use strict mode it will displace undefined
+// The reason is the this has the this subsitution when we are using the non strict mode whenever js engine find this with the value of null and undefined it will replace it with the globalObject
+window.x(); // This will gives us the result of window even in the strict mode
+
+const student = {
+  name: "Taimoor Hussain",
+  fn: function () {
+    console.log(this);
+  },
+};
+
+student.fn(); //It will gives the object
+
+const student1 = {
+  name: "Taimoor Hussain",
+  fn: function () {
+    console.log(this.name);
+  },
+};
+
+const student2 = {
+  name: "Alexa",
+};
+
+student1.fn.call(student2);
+
+const obj1 = {
+  a: "BMW",
+  fn: () => {
+    const fn2 = () => {
+      console.log(this);
+    };
+    fn2();
+  },
+};
+obj1.fn(); //Output is window
