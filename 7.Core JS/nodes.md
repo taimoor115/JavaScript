@@ -1,20 +1,4 @@
-# Call 
-const name1 = {
-  firstName : "Taimoor",
-  lastName : "Hussain",
-  printName: function() {
-    console.log(`${this.firstName} ${this.lastName}`);
-  }
-}
 
-name1.printName(); //Taimoor Hussain
-
-const name2 = {
-  firstName: "Ghayoor",
-  lastName :"Hussain",
-}
-
-name1.printName.call(name2); // Ghayoor Hussain
 
 Call: In JavaScript, the call() method is used to invoke a function with a specified this context and arguments provided individually. It allows you to explicitly set what this refers to within the function when it is executed
 

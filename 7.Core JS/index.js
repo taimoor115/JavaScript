@@ -1,73 +1,98 @@
-// // Promises
+// // // Promises
 
-// // fetch function is used to get the result from the website it is built in js
-// // if we use only fetch function then it gives us the promise in return
-// // But it doesn't gives us the result if we want some result then we should use await with fetch
-// // But if we directly give await to the fetch and varaible then it gives us the syntax error that fetch only used in async function
-// // SO make a async function
+// // // fetch function is used to get the result from the website it is built in js
+// // // if we use only fetch function then it gives us the promise in return
+// // // But it doesn't gives us the result if we want some result then we should use await with fetch
+// // // But if we directly give await to the fetch and varaible then it gives us the syntax error that fetch only used in async function
+// // // SO make a async function
 
-// async function getData() {
-//   let data = await fetch("https://jsonplaceholder.typicode.com/users");
-//   console.log(data);
+// // async function getData() {
+// //   let data = await fetch("https://jsonplaceholder.typicode.com/users");
+// //   console.log(data);
+// // }
+
+// // getData();
+// // console.log("hello");
+
+// // fetch('https://jsonplaceholder.typicode.com/users')
+// // .then((data) => {console.log(data);})
+// // .catch((error) => {console.log(error);})
+
+// // Closures
+// // . A closure is the combination of a function and the lexical environment within which that function was declared.
+
+// // function outer() {
+// //   let num1 = 9;
+// //   function inner() {
+// //     return num1;
+// //   }
+// //   return inner;
+// // }
+// // let a = outer()();
+// // console.log(a);
+
+
+// // function makeFunc() {
+// //   const name = "Mozilla";
+// //   function displayName() {
+// //     console.log(name);
+// //   }
+// //   return displayName;
+// // }
+
+// // const myFunc = makeFunc();
+// // myFunc();
+
+
+// // Call Apply bind 
+
+
+
+// const name1 = {
+//   firstName : "Taimoor",
+//   lastName : "Hussain",
 // }
 
-// getData();
-// console.log("hello");
-
-// fetch('https://jsonplaceholder.typicode.com/users')
-// .then((data) => {console.log(data);})
-// .catch((error) => {console.log(error);})
-
-// Closures
-// . A closure is the combination of a function and the lexical environment within which that function was declared.
-
-// function outer() {
-//   let num1 = 9;
-//   function inner() {
-//     return num1;
-//   }
-//   return inner;
+// let printName = function(city, address ) {
+//   console.log(`${this.firstName} ${this.lastName} ${city} ${address}`);
 // }
-// let a = outer()();
-// console.log(a);
+// printName.call(name1, "Lahore", "Amir Town")
 
-
-// function makeFunc() {
-//   const name = "Mozilla";
-//   function displayName() {
-//     console.log(name);
-//   }
-//   return displayName;
+// const name2 = {
+//   firstName: "Ghayoor",
+//   lastName :"Hussain",
 // }
 
-// const myFunc = makeFunc();
-// myFunc();
+// printName.call(name2, "Lahore", "Amir Town");
+
+// printName.apply(name2, ["Lahore", "Amir Town"])
+
+// let print = printName.bind(name2, "Lahore", "Amir Town")
+// print()
 
 
-// Call Apply bind 
+// PolyFill For bind function:
 
-
-
-const name1 = {
-  firstName : "Taimoor",
-  lastName : "Hussain",
+let name1 = {
+  firstName : "Taimoor Hussain",
 }
 
-let printName = function(city, address ) {
-  console.log(`${this.firstName} ${this.lastName} ${city} ${address}`);
-}
-printName.call(name1, "Lahore", "Amir Town")
-
-const name2 = {
-  firstName: "Ghayoor",
-  lastName :"Hussain",
+let printFunction = function(city,address) {
+  console.log(this.firstName + " " + city +  " " + address);
 }
 
-printName.call(name2, "Lahore", "Amir Town");
-
-printName.apply(name2, ["Lahore", "Amir Town"])
-
-let print = printName.bind(name2, "Lahore", "Amir Town")
-print()
+let print = printFunction.bind(name1, "Lahore")
+print("Amir Town")
 
 
+
+Function.prototype.myBind = function (...arg) {
+  let obj = this
+  let params = arg.slice(1);
+  return function(...arg2) {
+      obj.apply(arg[0], [...params, ...arg2]);
+  }
+}
+
+let print2 = printFunction.myBind(name1, "Lahore")
+print2("Amir Town")
