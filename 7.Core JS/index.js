@@ -102,19 +102,67 @@
 
 // Two methods
 
-function sum(x,y) {
-  console.log(x+y);
+// function sum(x,y) {
+//   console.log(x+y);
+// }
+
+// let returnFn = sum.bind(this, 3);
+// returnFn(4);
+
+
+// function outer(x) {
+//   return function inner(y) {
+//     console.log(x+y);
+//   }
+// }
+
+// let fn = outer(3);
+// fn(4);
+
+
+// Prototype and Prototypal inheritence 
+// Constructor function
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
 }
 
-let returnFn = sum.bind(this, 3);
-returnFn(4);
+// Adding a method to the prototype
+Person.prototype.sayHello = function() {
+  console.log(`Hello, my name is ${this.name} and I'm ${this.age} years old.`);
+};
+
+// Creating instances
+const person1 = new Person("Alice", 30);
+const person2 = new Person("Bob", 25);
+
+// Both instances inherit the sayHello method
+person1.sayHello(); // Output: Hello, my name is Alice and I'm 30 years old.
+person2.sayHello(); // Output: Hello, my name is Bob and I'm 25 years old.
 
 
-function outer(x) {
-  return function inner(y) {
-    console.log(x+y);
+console.log(Person.__proto__);
+
+let obj1 = {
+  name: "Taimoor",
+  last: "Hussain",
+  age: 22,
+}
+let obj2 = {
+  name: "Ghayoor Hussain",
+}
+
+obj2.__proto__ = obj1;
+
+console.log(obj2.age);
+
+
+let personProto = {
+  fn: function() {
+    console.log("hello");
   }
 }
 
-let fn = outer(3);
-fn(4);
+const person = Object.create(personProto);
+
+person.fn()
