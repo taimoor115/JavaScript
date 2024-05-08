@@ -73,26 +73,48 @@
 
 // PolyFill For bind function:
 
-let name1 = {
-  firstName : "Taimoor Hussain",
+// let name1 = {
+//   firstName : "Taimoor Hussain",
+// }
+
+// let printFunction = function(city,address) {
+//   console.log(this.firstName + " " + city +  " " + address);
+// }
+
+// let print = printFunction.bind(name1, "Lahore")
+// print("Amir Town")
+
+
+
+// Function.prototype.myBind = function (...arg) {
+//   let obj = this
+//   let params = arg.slice(1);
+//   return function(...arg2) {
+//       obj.apply(arg[0], [...params, ...arg2]);
+//   }
+// }
+
+// let print2 = printFunction.myBind(name1, "Lahore")
+// print2("Amir Town")
+
+
+// Function Curring:
+
+// Two methods
+
+function sum(x,y) {
+  console.log(x+y);
 }
 
-let printFunction = function(city,address) {
-  console.log(this.firstName + " " + city +  " " + address);
-}
-
-let print = printFunction.bind(name1, "Lahore")
-print("Amir Town")
+let returnFn = sum.bind(this, 3);
+returnFn(4);
 
 
-
-Function.prototype.myBind = function (...arg) {
-  let obj = this
-  let params = arg.slice(1);
-  return function(...arg2) {
-      obj.apply(arg[0], [...params, ...arg2]);
+function outer(x) {
+  return function inner(y) {
+    console.log(x+y);
   }
 }
 
-let print2 = printFunction.myBind(name1, "Lahore")
-print2("Amir Town")
+let fn = outer(3);
+fn(4);
