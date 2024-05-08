@@ -21,24 +21,53 @@
 // Closures
 // . A closure is the combination of a function and the lexical environment within which that function was declared.
 
-function outer() {
-  let num1 = 9;
-  function inner() {
-    return num1;
-  }
-  return inner;
+// function outer() {
+//   let num1 = 9;
+//   function inner() {
+//     return num1;
+//   }
+//   return inner;
+// }
+// let a = outer()();
+// console.log(a);
+
+
+// function makeFunc() {
+//   const name = "Mozilla";
+//   function displayName() {
+//     console.log(name);
+//   }
+//   return displayName;
+// }
+
+// const myFunc = makeFunc();
+// myFunc();
+
+
+// Call Apply bind 
+
+
+
+const name1 = {
+  firstName : "Taimoor",
+  lastName : "Hussain",
 }
-let a = outer()();
-console.log(a);
 
+let printName = function(city, address ) {
+  console.log(`${this.firstName} ${this.lastName} ${city} ${address}`);
+}
+printName.call(name1, "Lahore", "Amir Town")
 
-function makeFunc() {
-  const name = "Mozilla";
-  function displayName() {
-    console.log(name);
-  }
-  return displayName;
+const name2 = {
+  firstName: "Ghayoor",
+  lastName :"Hussain",
 }
 
-const myFunc = makeFunc();
-myFunc();
+printName.call(name2, "Lahore", "Amir Town");
+
+printName.apply(name2, ["Lahore", "Amir Town"])
+
+let print = printName.bind(name2, "Lahore", "Amir Town")
+print()
+
+
