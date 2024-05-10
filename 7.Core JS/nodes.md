@@ -63,3 +63,60 @@ let obj2 = {
 obj2.__proto__ = obj1;
 
 console.log(obj2.age);
+
+
+
+# Local Storage and Session Storage
+
+## Introduction
+
+Local Storage and Session Storage are two mechanisms provided by modern web browsers to allow web applications to store data locally within the user's browser. They are both part of the Web Storage API and provide a way to store key-value pairs persistently or for the duration of a browser session, respectively.
+
+## Local Storage
+
+Local Storage is designed to store data persistently across browser sessions. It allows web applications to store data with no expiration time, meaning the data will remain stored even after the browser is closed and reopened. 
+
+Key features of Local Storage:
+- Data is scoped to the origin (protocol, domain, and port) from which it was set.
+- Maximum storage size varies across browsers but is typically around 5-10 MB.
+- Data is stored as strings and can be accessed using JavaScript.
+
+### Usage:
+```javascript
+// Set a value in Local Storage
+localStorage.setItem('key', 'value');
+
+// Get a value from Local Storage
+const retrievedValue = localStorage.getItem('key');
+
+// Remove a value from Local Storage
+localStorage.removeItem('key');
+
+// Clear all values from Local Storage
+localStorage.clear();
+
+
+## Session Storage:
+Session storage is a type of browser storage that holds information for the duration of a user's visit to a website or web application. Unlike cookies, which can persist for a set time period, session storage gets cleared automatically when the user closes the browser tab or window.
+
+-Temporary storage: Data persists only within the current browsing session.
+-Client-side storage: Information resides on the user's device, not the server.
+-JavaScript access: Session storage is accessible and manipulated solely through JavaScript code.
+
+## Applications
+-Maintaining user state: Tracking user preferences, login status, or shopping cart contents.
+-Form management: Saving partially filled forms for later completion.
+-Real-time updates: Enabling dynamic content updates within a session.
+-Multi-step processes: Guiding users through a sequence of steps without losing data.
+
+
+## Cookie
+A browser cookie, often simply called a cookie, is a small piece of data that a website stores on your device (computer, phone, tablet) when you visit it.  These cookies act like tiny memory bits for websites, allowing them to remember information about your visit.
+
+Here's a breakdown of how browser cookies work:
+
+Storage Location: Cookies are stored in your web browser's designated storage area.
+Information Stored: They can hold various details, such as login credentials, site preferences (language choice), items in your shopping cart, or browsing history.
+Data Lifetime: Cookies have a set expiration date. They can be:
+Session Cookies: Disappear when you close your browser window.
+Persistent Cookies: Expire after a predefined time period or on a specific date.

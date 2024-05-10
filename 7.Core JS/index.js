@@ -116,53 +116,111 @@
 //   }
 // }
 
-// let fn = outer(3);
-// fn(4);
+// // let fn = outer(3);
+// // fn(4);
 
 
-// Prototype and Prototypal inheritence 
-// Constructor function
-function Person(name, age) {
-  this.name = name;
-  this.age = age;
-}
+// // Prototype and Prototypal inheritence 
+// // Constructor function
+// function Person(name, age) {
+//   this.name = name;
+//   this.age = age;
+// }
 
-// Adding a method to the prototype
-Person.prototype.sayHello = function() {
-  console.log(`Hello, my name is ${this.name} and I'm ${this.age} years old.`);
-};
+// // Adding a method to the prototype
+// Person.prototype.sayHello = function() {
+//   console.log(`Hello, my name is ${this.name} and I'm ${this.age} years old.`);
+// };
 
-// Creating instances
-const person1 = new Person("Alice", 30);
-const person2 = new Person("Bob", 25);
+// // Creating instances
+// const person1 = new Person("Alice", 30);
+// const person2 = new Person("Bob", 25);
 
-// Both instances inherit the sayHello method
-person1.sayHello(); // Output: Hello, my name is Alice and I'm 30 years old.
-person2.sayHello(); // Output: Hello, my name is Bob and I'm 25 years old.
-
-
-console.log(Person.__proto__);
-
-let obj1 = {
-  name: "Taimoor",
-  last: "Hussain",
-  age: 22,
-}
-let obj2 = {
-  name: "Ghayoor Hussain",
-}
-
-obj2.__proto__ = obj1;
-
-console.log(obj2.age);
+// // Both instances inherit the sayHello method
+// person1.sayHello(); // Output: Hello, my name is Alice and I'm 30 years old.
+// person2.sayHello(); // Output: Hello, my name is Bob and I'm 25 years old.
 
 
-let personProto = {
-  fn: function() {
-    console.log("hello");
+// console.log(Person.__proto__);
+
+// let obj1 = {
+//   name: "Taimoor",
+//   last: "Hussain",
+//   age: 22,
+// }
+// let obj2 = {
+//   name: "Ghayoor Hussain",
+// }
+
+// obj2.__proto__ = obj1;
+
+// console.log(obj2.age);
+
+
+// let personProto = {
+//   fn: function() {
+//     console.log("hello");
+//   }
+// }
+
+// const person = Object.create(personProto);
+
+// person.fn()
+
+
+
+
+// Local Storage:
+
+
+// Store String
+// localStorage.setItem("theme", "dark");
+// localStorage.setItem("font", "bold");
+// let theme = localStorage.getItem("theme");
+// console.log(theme);
+
+// localStorage.removeItem("font");
+// // localStorage.clear()
+// console.log(localStorage);
+
+
+// Store data in the form of Object
+
+// let person = {
+//   name: "Taimoor Hussain",
+//   age: 22,
+// }
+
+// let personString = JSON.stringify(person)
+// localStorage.setItem("person", personString)
+
+// console.log(localStorage);
+
+// let a =JSON.parse(localStorage.getItem("person"))
+// console.log(a.name);
+
+
+let themeSelector = document.querySelector("#themeSelector")
+themeSelector.addEventListener("change", (e) => {
+  localStorage.setItem("theme", e.target.value)
+  changeTheme(e.target.value);
+})
+
+
+function changeTheme(theme) {
+  if(theme === "dark") {
+    document.body.style.backgroundColor = "black";
+  } else if(theme === "light") {
+    document.body.style.backgroundColor = "grey";
+  } else {
+    document.body.style.backgroundColor = "white";
   }
 }
 
-const person = Object.create(personProto);
 
-person.fn()
+window.addEventListener("storage", (e) => {
+  if(e.key === "theme") {
+    changeTheme(e.newValue);
+    themeSelector.value = e.newValue
+  }
+})
