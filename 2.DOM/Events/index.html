@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Bubbling and Event Delegation</title>
+  </head>
+
+  <style>
+    div {
+      min-width: 100px;
+      min-height: 100px;
+      padding: 30px;
+      border: 1px solid black;
+    }
+  </style>
+  <!--  Event Bubbling and Capturting aka trikkling  -->
+  <!--  Event bubbling and capturing are way to propogate events in the DOM tree. They both have there 
+        own behaviours. When we clicked on the child event it propogates to the parent and go on until 
+        root.Event capturing is its opposite of bubbling.
+        -->
+  <body>
+    <div id="grandparent">
+      grandparent
+      <div id="parent">
+        parent
+        <div id="child">child</div>
+      </div>
+    </div>
+  </body>
+
+  <script src="index.js"></script>
+</html>
